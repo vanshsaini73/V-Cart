@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title.page">VCart | Customer Panel</title>
+    <link rel="stylesheet" href="user.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    </head>
+  </head>
+  <body>
+      <div class="top">
+          <div class="header">
+            <div class="brand">
+                <div class="brand-logo"><img src="images/1790931904963.png"></div>
+                <div>
+                    <div class="brand-name">VCart</div>
+                    <div class="brand-description" data-i18n="brand.description">Customer Panel</div>
+                </div>
+            </div>
+            <div class="profile">
+                <div class="profile-pic" id="header-profile-pic">
+                    <span id="header-profile-initials">VS</span>
+                    <img id="header-profile-image" alt="" hidden>
+                </div>
+                <div>
+                    <div class="profile-name" id="header-profile-name">Vansh Saini</div>
+                    <a href="#">
+                        <div class="profile-logout" data-i18n="header.logout">Logout</div>
+                    </a>
+                </div>
+            </div>
+          </div>
+          <nav class="navbar">
+              <button class="nav-item active" type="button" data-section="dashboard" aria-controls="dashboard" aria-pressed="true" data-i18n="nav.profile">Profile</button>
+              <button class="nav-item" type="button" data-section="my-order" aria-controls="my-order" aria-pressed="false" data-i18n="nav.orders">My Orders</button>
+              <button class="nav-item" type="button" data-section="my-wishlist" aria-controls="my-wishlist" aria-pressed="false" data-i18n="nav.wishlist">My Wishlist</button>
+              <button class="nav-item" type="button" data-section="my-addresses" aria-controls="my-addresses" aria-pressed="false" data-i18n="nav.addresses">My Addresses</button>
+              <button class="nav-item" type="button" data-section="payment-wallet" aria-controls="payment-wallet" aria-pressed="false" data-i18n="nav.wallet">Payment & Wallet</button>
+              <button class="nav-item" type="button" data-section="coupons-offers" aria-controls="coupons-offers" aria-pressed="false" data-i18n="nav.offers">Coupons & Offers</button>
+              <button class="nav-item" type="button" data-section="returns-refunds" aria-controls="returns-refunds" aria-pressed="false" data-i18n="nav.returns">Returns & Refunds</button>
+              <button class="nav-item" type="button" data-section="help-support" aria-controls="help-support" aria-pressed="false" data-i18n="nav.help">Help & Support</button>
+              <button class="nav-item" type="button" data-section="setting" aria-controls="setting" aria-pressed="false" data-i18n="nav.settings">Setting</button>
+          </nav>
+      </div>
+
+      <main class="main-content">
+            <section class="dashboard content-section active" id="dashboard">
+                <div class="profile-heading">
+                    <div>
+                        <h2 data-i18n="profile.title">Personal Information</h2>
+                        <p data-i18n="profile.description">Manage your profile details and contact information.</p>
+                    </div>
+                </div>
+                <form class="profile-form" id="profile-form">
+                    <div class="profile-photo-row">
+                        <div class="profile-photo-preview" id="profile-photo-preview">
+                            <span id="profile-photo-initials">VS</span>
+                            <img id="profile-photo-image" alt="Profile photo" data-i18n-alt="profile.photoAlt" hidden>
+                        </div>
+                        <div class="photo-controls">
+                            <label class="photo-upload" for="profile-photo" data-i18n="profile.choosePhoto">Choose profile photo</label>
+                            <input class="visually-hidden" type="file" id="profile-photo" accept="image/*">
+                            <span class="field-hint" data-i18n="profile.photoHint">JPG, PNG or GIF. Maximum size 1 MB.</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-fields">
+                        <label class="profile-field" for="profile-name">
+                            <span data-i18n="field.fullName">Full name</span>
+                            <input type="text" id="profile-name" name="name" autocomplete="name" placeholder="Enter your full name" data-i18n-placeholder="placeholder.fullName" required>
+                        </label>
+                        <label class="profile-field" for="profile-email">
+                            <span data-i18n="field.email">Email address</span>
+                            <input type="email" id="profile-email" name="email" autocomplete="email" placeholder="you@example.com" data-i18n-placeholder="placeholder.email" readonly required>
+                        </label>
+                        <label class="profile-field" for="profile-mobile">
+                            <span data-i18n="field.mobile">Mobile number</span>
+                            <input type="tel" id="profile-mobile" name="mobile" autocomplete="tel" placeholder="Enter your mobile number" data-i18n-placeholder="placeholder.mobile">
+                        </label>
+                        <label class="profile-field" for="profile-gender">
+                            <span data-i18n="field.gender">Gender</span>
+                            <select id="profile-gender" name="gender">
+                                <option value="" data-i18n="gender.select">Select gender</option>
+                                <option value="Female" data-i18n="gender.female">Female</option>
+                                <option value="Male" data-i18n="gender.male">Male</option>
+                                <option value="Other" data-i18n="gender.other">Other</option>
+                                <option value="Prefer not to say" data-i18n="gender.private">Prefer not to say</option>
+                            </select>
+                        </label>
+                        <label class="profile-field" for="profile-dob">
+                            <span data-i18n="field.dob">Date of birth</span>
+                            <input type="date" id="profile-dob" name="dob" autocomplete="bday">
+                        </label>
+                        <label class="profile-field profile-field-wide" for="profile-address">
+                            <span data-i18n="field.address">Address</span>
+                            <textarea id="profile-address" name="address" autocomplete="street-address" rows="3" placeholder="Enter your address" data-i18n-placeholder="placeholder.address"></textarea>
+                        </label>
+                    </div>
+
+                    <div class="profile-form-footer">
+                        <p class="profile-save-status" id="profile-save-status" role="status" aria-live="polite"></p>
+                        <button class="save-profile-button" type="submit" data-i18n="profile.save">Save changes</button>
+                    </div>
+                </form>
+            </section>
+            <section class="my-order content-section" id="my-order">
+                <h2 data-i18n="section.orders">My Orders</h2>
+            </section>
+            <section class="my-wishlist content-section" id="my-wishlist">
+                <h2 data-i18n="section.wishlist">My Wishlist</h2>
+            </section>
+            <section class="my-addresses content-section" id="my-addresses">
+                <div class="profile-heading addresses-heading">
+                    <div>
+                        <h2 data-i18n="addresses.title">My Addresses</h2>
+                        <p data-i18n="addresses.description">Keep your permanent and order delivery addresses organized.</p>
+                    </div>
+                </div>
+                <div class="address-grid">
+                    <section class="address-card" aria-labelledby="permanent-address-title">
+                        <div class="address-card-heading">
+                            <div>
+                                <h3 id="permanent-address-title" data-i18n="addresses.permanentTitle">Permanent Address</h3>
+                                <p data-i18n="addresses.permanentDescription">Your home or primary address</p>
+                            </div>
+                            <span class="address-tag" data-i18n="addresses.permanentTag">Permanent</span>
+                        </div>
+                        <div class="address-fields">
+                            <label class="profile-field" for="permanent-name">
+                                <span data-i18n="field.fullName">Full name</span>
+                                <input id="permanent-name" type="text" autocomplete="name" placeholder="Enter full name" data-i18n-placeholder="placeholder.fullNameShort">
+                            </label>
+                            <label class="profile-field" for="permanent-mobile">
+                                <span data-i18n="field.mobile">Mobile number</span>
+                                <input id="permanent-mobile" type="tel" autocomplete="tel" placeholder="Enter mobile number" data-i18n-placeholder="placeholder.mobileShort">
+                            </label>
+                            <label class="profile-field address-field-wide" for="permanent-line">
+                                <span data-i18n="field.address">Address</span>
+                                <textarea id="permanent-line" autocomplete="street-address" rows="3" placeholder="House number, street, area" data-i18n-placeholder="placeholder.street"></textarea>
+                            </label>
+                            <label class="profile-field" for="permanent-city">
+                                <span data-i18n="field.city">City</span>
+                                <input id="permanent-city" type="text" autocomplete="address-level2" placeholder="Enter city" data-i18n-placeholder="placeholder.city">
+                            </label>
+                            <label class="profile-field" for="permanent-postal">
+                                <span data-i18n="field.pin">PIN code</span>
+                                <input id="permanent-postal" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="Enter PIN code" data-i18n-placeholder="placeholder.pin">
+                            </label>
+                        </div>
+                        <div class="address-save-footer">
+                            <p id="permanent-address-status" role="status" aria-live="polite"></p>
+                            <button class="save-profile-button" id="save-permanent-address" type="button" data-i18n="addresses.save">Save address</button>
+                        </div>
+                    </section>
+
+                    <section class="address-card" aria-labelledby="delivery-address-title">
+                        <div class="address-card-heading">
+                            <div>
+                                <h3 id="delivery-address-title" data-i18n="addresses.deliveryTitle">Order Delivery Address</h3>
+                                <p data-i18n="addresses.deliveryDescription">Where you want your orders delivered</p>
+                            </div>
+                            <span class="address-tag delivery-tag" data-i18n="addresses.deliveryTag">Delivery</span>
+                        </div>
+                        <div class="address-fields">
+                            <label class="profile-field" for="delivery-name">
+                                <span data-i18n="field.fullName">Full name</span>
+                                <input id="delivery-name" type="text" autocomplete="name" placeholder="Enter full name" data-i18n-placeholder="placeholder.fullNameShort">
+                            </label>
+                            <label class="profile-field" for="delivery-mobile">
+                                <span data-i18n="field.mobile">Mobile number</span>
+                                <input id="delivery-mobile" type="tel" autocomplete="tel" placeholder="Enter mobile number" data-i18n-placeholder="placeholder.mobileShort">
+                            </label>
+                            <label class="profile-field address-field-wide" for="delivery-line">
+                                <span data-i18n="field.address">Address</span>
+                                <textarea id="delivery-line" autocomplete="street-address" rows="3" placeholder="House number, street, area" data-i18n-placeholder="placeholder.street"></textarea>
+                            </label>
+                            <label class="profile-field" for="delivery-city">
+                                <span data-i18n="field.city">City</span>
+                                <input id="delivery-city" type="text" autocomplete="address-level2" placeholder="Enter city" data-i18n-placeholder="placeholder.city">
+                            </label>
+                            <label class="profile-field" for="delivery-postal">
+                                <span data-i18n="field.pin">PIN code</span>
+                                <input id="delivery-postal" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="Enter PIN code" data-i18n-placeholder="placeholder.pin">
+                            </label>
+                        </div>
+                        <div class="address-save-footer">
+                            <p id="delivery-address-status" role="status" aria-live="polite"></p>
+                            <button class="save-profile-button" id="save-delivery-address" type="button" data-i18n="addresses.save">Save address</button>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <section class="payment-wallet content-section" id="payment-wallet">
+                <h2 data-i18n="section.wallet">Payment & Wallet</h2>
+            </section>
+            <section class="coupons-offers content-section" id="coupons-offers">
+                <div class="profile-heading offers-heading">
+                    <div>
+                        <h2 data-i18n="offers.title">Coupons & Offers</h2>
+                        <p data-i18n="offers.subtitle">Pick an offer, copy its code, and use it at checkout.</p>
+                    </div>
+                </div>
+                <div class="offers-grid">
+                    <article class="offer-card">
+                        <div class="offer-card-top">
+                            <span class="offer-badge" data-i18n="offers.limited">Limited time</span>
+                            <span class="offer-discount">10% <span data-i18n="offers.off">OFF</span></span>
+                        </div>
+                        <h3 data-i18n="offers.tenTitle">Save 10% on your order</h3>
+                        <p class="offer-description" data-i18n="offers.tenDescription">Get 10% off on eligible products across the store.</p>
+                        <p class="offer-terms" data-i18n="offers.tenTerms">Minimum order: ₹499 · Maximum discount: ₹150</p>
+                        <div class="offer-code-row">
+                            <code>SAVE10</code>
+                            <button class="coupon-copy-button" type="button" data-coupon-code="SAVE10" data-i18n="offers.copy">Copy code</button>
+                        </div>
+                    </article>
+
+                    <article class="offer-card">
+                        <div class="offer-card-top">
+                            <span class="offer-badge offer-badge-value" data-i18n="offers.bestValue">Best value</span>
+                            <span class="offer-discount">20% <span data-i18n="offers.off">OFF</span></span>
+                        </div>
+                        <h3 data-i18n="offers.twentyTitle">Extra savings for your first order</h3>
+                        <p class="offer-description" data-i18n="offers.twentyDescription">Enjoy a bigger discount on your first purchase.</p>
+                        <p class="offer-terms" data-i18n="offers.twentyTerms">Minimum order: ₹799 · Maximum discount: ₹300</p>
+                        <div class="offer-code-row">
+                            <code>FIRST20</code>
+                            <button class="coupon-copy-button" type="button" data-coupon-code="FIRST20" data-i18n="offers.copy">Copy code</button>
+                        </div>
+                    </article>
+
+                    <article class="offer-card">
+                        <div class="offer-card-top">
+                            <span class="offer-badge offer-badge-delivery" data-i18n="offers.delivery">Delivery offer</span>
+                            <span class="offer-discount offer-discount-free" data-i18n="offers.free">FREE</span>
+                        </div>
+                        <h3 data-i18n="offers.shippingTitle">Free delivery on your order</h3>
+                        <p class="offer-description" data-i18n="offers.shippingDescription">Save on delivery charges when you shop more.</p>
+                        <p class="offer-terms" data-i18n="offers.shippingTerms">Minimum order: ₹299 · No maximum discount</p>
+                        <div class="offer-code-row">
+                            <code>SHIPFREE</code>
+                            <button class="coupon-copy-button" type="button" data-coupon-code="SHIPFREE" data-i18n="offers.copy">Copy code</button>
+                        </div>
+                    </article>
+                </div>
+                <p class="coupon-feedback" id="coupon-feedback" role="status" aria-live="polite"></p>
+            </section>
+            <section class="returns-refunds content-section" id="returns-refunds">
+                <h2 data-i18n="section.returns">Returns & Refunds</h2>
+            </section>
+            <section class="help-support content-section" id="help-support">
+                <h2 data-i18n="section.help">Help & Support</h2>
+            </section>
+            <section class="setting content-section" id="setting">
+              <h2 data-i18n="setting.title">Settings</h2>
+              <div class="language-setting">
+                  <label for="language-select" data-i18n="setting.languageLabel">Website language</label>
+                  <select id="language-select" name="language" aria-describedby="language-help">
+                      <option value="en">English</option>
+                      <option value="hi">हिन्दी</option>
+                      <option value="pa">ਪੰਜਾਬੀ</option>
+                      <option value="bn">বাংলা</option>
+                      <option value="ta">தமிழ்</option>
+                      <option value="te">తెలుగు</option>
+                  </select>
+                  <p id="language-help" data-i18n="setting.languageHelp">Choose a language to translate this page instantly.</p>
+                  <p id="settings-save-status" role="status" aria-live="polite"></p>
+                  <button class="save-profile-button" id="save-settings" type="button" data-i18n="settings.save">Save settings</button>
+              </div>
+            </section>
+        </main>
+        <nav class="nav-bottom">
+            <a href="index.html">
+                <div class="nav-item">
+                    <i class="fa-solid fa-house"></i>
+                    <span> Home </span>
+                </div>
+            </a>
+            <div class="nav-item">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span> Cart </span>
+            </div>
+            <div class="nav-item">
+                <i class="fa-solid fa-box"></i>
+                <span> Order </span>
+            </div>
+            <a href="userlogin.html">
+            <div class="nav-item">
+                <i class="fa-solid fa-user"></i>
+                <span> Account </span>
+            </div>
+            </a>
+        </nav>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="supabase-config.js"></script>
+        <script src="localstorage.js"></script>
+        <script src="cloud-storage.js"></script>
+        <script src="user.js"></script>
+  </body>
+</html>

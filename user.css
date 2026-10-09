@@ -1,0 +1,672 @@
+body {
+    margin: 0%;
+    background: white;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.top{
+    position:sticky;
+    top: 0px;
+    background: white;
+    border-bottom: 1px solid black;
+    z-index: 10;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #cff4ff;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    position: sticky;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 0px;
+}
+
+.brand-logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.brand-logo img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    display: block;
+}
+
+.brand-name {
+    font-size: 18px;
+    color: #222;
+    font-weight: bold;
+}
+
+.brand-description {
+    font-size: 13px;
+    color: #666;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-right: 1%;
+    margin-top: 0px;
+}
+
+.profile-pic {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #007bff, #0056d2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-pic img,
+.profile-photo-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+}
+
+.profile-name {
+    font-size: 18px;
+    color: #222;
+    font-weight: bold;
+}
+
+.profile-logout {
+    font-size: 13px;
+    color: #666;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    white-space: nowrap;
+    padding: 8px 8px;
+}
+
+.nav-item {
+    flex: 0 0 auto;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+}
+
+.nav-item.active {
+    background:#cff4ff ;
+    color: black;
+    font-weight: bold;
+}
+
+.nav-bottom {
+    background: white;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0px;
+    margin-left: 0%;
+    margin-right: 0%;  
+    left: 0;
+    right: 0;
+    flex-direction: row;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    height: var(--nav-bottom-height);
+    transition: bottom 0.2s ease;
+}
+
+.nav-item {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.main-content {
+    width: min(100% - 40px, 960px);
+    margin: 32px auto;
+    padding-bottom: calc(var(--nav-bottom-height) + 16px);
+}
+
+.profile-heading h2 {
+    margin: 0;
+    color: #172b36;
+    font-size: 26px;
+}
+
+.profile-heading p {
+    margin: 8px 0 24px;
+    color: #64727a;
+}
+
+.profile-form {
+    padding: 24px;
+    border: 1px solid #d9e3e7;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.profile-photo-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e5ecef;
+}
+
+.profile-photo-preview {
+    width: 76px;
+    height: 76px;
+    flex: 0 0 76px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #cff4ff;
+    color: #17445a;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.photo-controls {
+    display: grid;
+    justify-items: start;
+    gap: 8px;
+}
+
+.photo-upload {
+    padding: 9px 13px;
+    border: 1px solid #9bbbc7;
+    border-radius: 6px;
+    color: #17445a;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.photo-upload:hover {
+    background: #effaff;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.field-hint {
+    color: #64727a;
+    font-size: 13px;
+}
+
+.profile-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    padding: 24px 0;
+}
+
+.profile-field {
+    display: grid;
+    gap: 8px;
+    color: #293941;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.profile-field input,
+.profile-field select,
+.profile-field textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #cbd7dc;
+    border-radius: 6px;
+    background: #fff;
+    color: #172b36;
+    font: inherit;
+    font-weight: 400;
+}
+
+.profile-field textarea {
+    resize: vertical;
+}
+
+.profile-field input:focus,
+.profile-field select:focus,
+.profile-field textarea:focus {
+    outline: 2px solid #77c9e3;
+    outline-offset: 1px;
+    border-color: #3286a2;
+}
+
+.profile-field-wide {
+    grid-column: 1 / -1;
+}
+
+.profile-form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 18px;
+    border-top: 1px solid #e5ecef;
+}
+
+.profile-save-status {
+    margin: 0;
+    color: #27633e;
+    font-size: 14px;
+}
+
+.save-profile-button {
+    min-height: 44px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 6px;
+    background: #087b9c;
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+}
+
+.save-profile-button:hover {
+    background: #066781;
+}
+
+.addresses-heading {
+    margin-bottom: 24px;
+}
+
+.addresses-heading p {
+    margin-bottom: 0;
+}
+
+.address-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 20px;
+}
+
+.address-card {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid #d9e3e7;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.address-card-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.address-card-heading h3 {
+    margin: 0;
+    color: #172b36;
+    font-size: 18px;
+}
+
+.address-card-heading p {
+    margin: 6px 0 0;
+    color: #64727a;
+    font-size: 13px;
+}
+
+.address-save-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #e5ecef;
+}
+
+.address-save-footer p {
+    margin: 0;
+    color: #27633e;
+    font-size: 14px;
+}
+
+.address-tag {
+    flex: 0 0 auto;
+    padding: 5px 8px;
+    border-radius: 4px;
+    background: #e7f7ec;
+    color: #27633e;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.delivery-tag {
+    background: #e8f6fb;
+    color: #17637b;
+}
+
+.address-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.address-field-wide {
+    grid-column: 1 / -1;
+}
+
+.language-setting {
+    box-sizing: border-box;
+    display: grid;
+    gap: 10px;
+    width: min(100%, 420px);
+    min-width: 0;
+    max-width: 100%;
+    margin-top: 20px;
+    padding: 22px;
+    border: 1px solid #d9e3e7;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.language-setting label {
+    color: #293941;
+    font-weight: 600;
+}
+
+.language-setting select {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 12px;
+    border: 1px solid #cbd7dc;
+    border-radius: 6px;
+    background: #fff;
+    color: #172b36;
+    font: inherit;
+}
+
+.language-setting select:focus {
+    outline: 2px solid #77c9e3;
+    outline-offset: 1px;
+    border-color: #3286a2;
+}
+
+.language-setting p {
+    margin: 0;
+    color: #64727a;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.offers-heading {
+    margin-bottom: 24px;
+}
+
+.offers-heading p {
+    margin-bottom: 0;
+}
+
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 18px;
+}
+
+.offer-card {
+    display: flex;
+    min-width: 0;
+    min-height: 276px;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid #d9e3e7;
+    border-top: 3px solid #087b9c;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.offer-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.offer-badge {
+    padding: 5px 8px;
+    border-radius: 4px;
+    background: #e8f6fb;
+    color: #17637b;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.offer-badge-value {
+    background: #e7f7ec;
+    color: #27633e;
+}
+
+.offer-badge-delivery {
+    background: #fff4d9;
+    color: #765812;
+}
+
+.offer-discount {
+    color: #087b9c;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.offer-discount-free {
+    color: #27633e;
+    font-size: 19px;
+}
+
+.offer-card h3 {
+    margin: 20px 0 8px;
+    color: #172b36;
+    font-size: 18px;
+    line-height: 1.35;
+}
+
+.offer-description {
+    margin: 0;
+    color: #64727a;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.offer-terms {
+    margin: 16px 0 14px;
+    color: #52636c;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.offer-code-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px dashed #cbd7dc;
+}
+
+.offer-code-row code {
+    color: #172b36;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.coupon-copy-button {
+    min-height: 38px;
+    padding: 0 12px;
+    border: 1px solid #087b9c;
+    border-radius: 6px;
+    background: #fff;
+    color: #087b9c;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.coupon-copy-button:hover {
+    background: #effaff;
+}
+
+.coupon-copy-button:focus-visible {
+    outline: 2px solid #77c9e3;
+    outline-offset: 2px;
+}
+
+.coupon-feedback {
+    min-height: 20px;
+    margin: 14px 0 0;
+    color: #27633e;
+    font-size: 14px;
+}
+
+@media(max-width: 760px) {
+    .offers-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+@media(max-width: 480px) {
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #cff4ff;
+    }
+
+    .navbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 30px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        padding: 8px 8px;
+    }
+
+    .main-content {
+        width: calc(100% - 24px);
+        margin: 24px auto;
+    }
+
+    .profile-heading h2 {
+        font-size: 22px;
+    }
+
+    .profile-form {
+        padding: 16px;
+    }
+
+    .profile-fields {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 20px 0;
+    }
+
+    .profile-field-wide {
+        grid-column: auto;
+    }
+
+    .profile-form-footer {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .save-profile-button {
+        width: 100%;
+    }
+
+    .address-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .address-card {
+        padding: 16px;
+    }
+
+    .language-setting {
+        padding: 16px;
+    }
+
+    .offers-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .offer-card {
+        min-height: 250px;
+        padding: 17px;
+    }
+}

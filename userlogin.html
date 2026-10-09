@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Customer Register</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+
+            body {
+                margin: 0;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(135deg, #eef4ff 0%, #dfeafe 100%);
+                font-family: Arial, sans-serif;
+                padding: 30px 20px;
+            }
+
+            form {
+                width: min(420px, 90vw);
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 20px;
+                box-shadow: 0 15px 35px rgba(37, 99, 235, 0.12);
+                padding: 30px 28px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .customer-register {
+                display: none;
+            }
+
+            .customer-login {
+                display: flex;
+            }
+
+            .visible {
+                display: flex;
+            }
+
+            .hidden {
+                display: none !important;
+            }
+
+            h2 {
+                margin: 0 0 8px;
+                text-align: center;
+                color: #1e293b;
+            }
+
+            label,
+            lable {
+                font-weight: 600;
+                color: #334155;
+            }
+
+            input,
+            select {
+                width: 100%;
+                padding: 12px 14px;
+                border-radius: 10px;
+                border: 1px solid #cbd5e1;
+                outline: none;
+                font-size: 0.95rem;
+            }
+
+            .password-wrapper {
+                position: relative;
+                width: 100%;
+            }
+
+            .password-wrapper input {
+                padding-right: 58px;
+            }
+
+            .toggle-password {
+                position: absolute;
+                right: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: transparent !important;
+                box-shadow: none !important;
+                color: #2563eb;
+                font-weight: 700;
+                font-size: 0.8rem;
+                padding: 0;
+                border: none;
+                cursor: pointer;
+            }
+
+            .password-warning {
+                display: none;
+                color: #dc2626;
+                font-size: 0.8rem;
+                margin-top: -4px;
+                font-weight: 600;
+            }
+
+            .password-warning.show {
+                display: block;
+            }
+
+            input:focus,
+            select:focus {
+                border-color: #2563eb;
+                box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+            }
+
+            a{
+                border: none;
+                border-radius: 10px;
+                background: linear-gradient(135deg, #2563eb, #7c3aed);
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                color: white;
+                font-weight: 700;
+                padding: 8px 16px;
+                cursor: pointer;
+                transition: 0.2s ease;
+            }
+
+            .register-btn,
+            .login-btn {
+                border: none;
+                border-radius: 10px;
+                background: linear-gradient(135deg, #2563eb, #7c3aed);
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                color: white;
+                font-weight: 700;
+                padding: 8px 16px;
+                cursor: pointer;
+                transition: 0.2s ease;
+            }
+
+            button{
+                background: transparent;
+                border: none;
+                color: white;
+            }
+
+            p {
+                display: flex;
+                justify-content: center;
+                margin: 8px 0 0;
+                text-align: center;
+                color: #475569;
+            }
+
+            p button {
+                background: transparent;
+                color: #2563eb;
+                box-shadow: none;
+                padding: 0;
+                margin-left: 6px;
+            }
+        </style>
+    </head>
+    <body>
+        <form class="customer-register" id="registerForm">
+            <h2> Create Customer Account</h2>
+            <label>Full Name</label>
+            <input type="text" placeholder="Full Name" required>
+            <label>Email Address</label>
+            <input type="email" placeholder="Enter Email address" required>
+            <label>Mobile Number</label>
+            <input type="tel" placeholder="Enter Mobile Number" required>
+            <label>Date of Birth</label>
+            <input type="date" placeholder="Enter Your DOB" required>
+            <label>Gender</label>
+            <select aria-label="Gender" required>
+                <option value="" selected disabled>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <label>Password</label>
+            <div class="password-wrapper">
+                <input type="password" name="password" placeholder="Enter Your Password" autocomplete="new-password" required>
+                <button type="button" class="toggle-password" aria-label="Show password">Show</button>
+            </div>
+            <label>Confirm Password</label>
+            <div class="password-wrapper">
+                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Your Password" autocomplete="new-password" required>
+                <button type="button" class="toggle-password" aria-label="Show password">Show</button>
+            </div>
+            <div id="passwordWarning" class="password-warning">Password do not match.</div>
+            <button type="button" class="register-btn">Register</button>
+            <p> Already have an account <button type="button" class="toggle-btn" data-target="login">Login</button></p>
+        </form>
+
+        <form class="customer-login visible" id="loginForm">
+            <h2> Customer Login</h2>
+            <label>Username</label>
+            <input type="email" name="username" placeholder="Email address" autocomplete="username" required>
+            <label>Password</label>
+            <div class="password-wrapper">
+                <input type="password" name="password" placeholder="Enter Password" autocomplete="current-password" required>
+                <button type="button" class="toggle-password" aria-label="Show password">Show</button>
+            </div>
+            <button type="button" class="login-btn">Login</button>
+            <p> Do not have an account <button type="button" class="toggle-btn" data-target="register">Create Account</button></p>
+            <a href="sellerlogin.html">Seller</a>
+            <a href="sa.html">admin</a>
+        </form>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="supabase-config.js"></script>
+        <script src="localstorage.js"></script>
+        <script src="cloud-storage.js"></script>
+        <script>
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const toggleButtons = document.querySelectorAll('.toggle-btn');
+            const passwordToggles = document.querySelectorAll('.toggle-password');
+            const passwordInput = document.querySelector('#registerForm input[name="password"]');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const passwordWarning = document.getElementById('passwordWarning');
+
+            function showForm(formToShow, formToHide) {
+                if (!formToShow || !formToHide) return;
+                formToShow.classList.remove('hidden');
+                formToShow.classList.add('visible');
+                formToHide.classList.remove('visible');
+                formToHide.classList.add('hidden');
+            }
+
+            function validatePasswordMatch() {
+                if (!passwordInput || !confirmPasswordInput || !passwordWarning) return;
+
+                const isMatch = passwordInput.value === confirmPasswordInput.value && confirmPasswordInput.value !== '';
+                passwordWarning.classList.toggle('show', !isMatch && confirmPasswordInput.value !== '');
+            }
+
+            toggleButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    const target = this.getAttribute('data-target');
+
+                    if (target === 'register') {
+                        showForm(registerForm, loginForm);
+                    } else if (target === 'login') {
+                        showForm(loginForm, registerForm);
+                    }
+                });
+            });
+
+            passwordToggles.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    const passwordField = this.parentElement.querySelector('input');
+                    if (!passwordField) return;
+
+                    const isPasswordHidden = passwordField.type === 'password';
+                    passwordField.type = isPasswordHidden ? 'text' : 'password';
+                    this.textContent = isPasswordHidden ? 'Hide' : 'Show';
+                    this.setAttribute('aria-label', isPasswordHidden ? 'Hide password' : 'Show password');
+                });
+            });
+
+            if (passwordInput) {
+                passwordInput.addEventListener('input', validatePasswordMatch);
+            }
+
+            if (confirmPasswordInput) {
+                confirmPasswordInput.addEventListener('input', validatePasswordMatch);
+            }
+
+            document.querySelector('.register-btn')?.addEventListener('click', async function () {
+                validatePasswordMatch();
+
+                if (!passwordInput || !confirmPasswordInput) {
+                    alert('Please fill in the password fields.');
+                    return;
+                }
+
+                const formFields = registerForm.querySelectorAll('input[required], select[required]');
+                let isValid = true;
+
+                formFields.forEach((field) => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                    }
+                });
+
+                if (!isValid) {
+                    alert('Please complete all fields before registering.');
+                    return;
+                }
+
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    confirmPasswordInput.focus();
+                    passwordWarning.classList.add('show');
+                    return;
+                }
+
+                const customer = {
+                    name: registerForm.querySelector('input[type="text"]').value.trim(),
+                    email: registerForm.querySelector('input[type="email"]').value.trim(),
+                    mobile: registerForm.querySelector('input[type="tel"]').value.trim(),
+                    dob: registerForm.querySelector('input[type="date"]').value,
+                    gender: registerForm.querySelector('select').value,
+                    password: passwordInput.value
+                };
+
+                let registration;
+                try {
+                    registration = await window.VCartAccounts.register(customer);
+                    if (registration === false) {
+                        alert('An account with this email or mobile number already exists. Please log in.');
+                        showForm(loginForm, registerForm);
+                        loginForm.querySelector('input[name="username"]').value = customer.email;
+                        return;
+                    }
+                } catch (error) {
+                    console.error('Could not register the customer account.', error);
+                    alert('Could not create your account. Check your internet connection and try again.');
+                    return;
+                }
+
+                showForm(loginForm, registerForm);
+                loginForm.querySelector('input[name="username"]').value = customer.email;
+                loginForm.querySelector('input[name="password"]').value = '';
+                alert(registration?.confirmationRequired
+                    ? 'Registration successful. Confirm your email using the link we sent, then log in.'
+                    : 'Registration successful. Please log in with your email and password.');
+            });
+
+            document.querySelector('.login-btn')?.addEventListener('click', async function () {
+                const username = loginForm.querySelector('input[name="username"]');
+                const password = loginForm.querySelector('input[name="password"]');
+
+                if (!username || !password || !username.value.trim() || !password.value.trim()) {
+                    alert('Please enter your username and password.');
+                    return;
+                }
+
+                let authentication;
+                try {
+                    authentication = await window.VCartAccounts.authenticate(username.value, password.value);
+                } catch (error) {
+                    console.error('Could not check the saved customer accounts.', error);
+                    alert('Could not check your account. Please try again.');
+                    return;
+                }
+
+                if (authentication.status === 'blocked') {
+                    alert('This account has been blocked. Please contact the administrator.');
+                    password.focus();
+                    return;
+                }
+
+                if (authentication.status === 'unconfirmed') {
+                    alert('Please confirm your email using the link we sent, then log in again.');
+                    password.focus();
+                    return;
+                }
+
+                if (authentication.status === 'email_required') {
+                    alert('Please log in using your email address.');
+                    username.focus();
+                    return;
+                }
+
+                if (authentication.status !== 'authenticated') {
+                    alert('Email or password is incorrect.');
+                    password.focus();
+                    return;
+                }
+
+                try {
+                    window.VCartSession.set(authentication.account || { role: 'customer', ...authentication.customer });
+                } catch (error) {
+                    console.error('Could not save the customer session.', error);
+                    alert('Login succeeded, but the session could not be saved. Check your browser storage and try again.');
+                    return;
+                }
+                window.location.href = authentication.account?.role === 'admin' ? 'sa.html' : 'user.html';
+            });
+        </script>
+    </body>
+</html>

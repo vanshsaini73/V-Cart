@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>V Shop Admin Panel</title>
+        <link rel="stylesheet" href="sa.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    </head>
+    <body>
+        <aside class="sidebar">
+            <div class="navbar">
+                <div class="brand">
+                    <div class="brand-logo"><img src="images/1790931904963.png"></div>
+                    <div>
+                        <div class="brand-name">VCart</div>
+                        <div class="brand-description">Super Admin Panel</div>
+                    </div>
+                </div>
+
+                <nav class="nav-links" aria-label="Admin navigation">
+                    <a href="#dashboard" class="active" data-section="dashboard">Dashboard</a>
+                    <a href="#user-manage" data-section="user-manage">User Manage</a>
+                    <a href="#seller-manage" data-section="seller-manage">Seller Manage</a>
+                    <a href="#product-manage" data-section="product-manage">Product Manage</a>
+                    <a href="#seller-approval" data-section="seller-approval">Seller Approval</a>
+                    <a href="#product-approval" data-section="product-approval">Product Approval</a>
+                    <a href="#settings" data-section="settings">Settings</a>
+                </nav>
+                <button class="logout-btn" type="button">Logout</button>
+            </div>
+        </aside>
+        
+
+        <div class="header">
+            <div class="search-bar">
+                <input type="search" placeholder="Search Anythings...">
+                <button class="search-btn" type="button">Search</button>
+            </div>
+            <div class="profile">
+                <div class="profile-pic">VS</div>
+                <div>
+                    <div class="profile-name">Administration</div>
+                    <div class="profile-description">Super Admin</div>
+                </div>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <div class="dashboard content-section active" id="dashboard">
+                <div class="dashboard-item">
+                    <h3>Total Users</h3>
+                    <p id="total-users">0</p>
+                </div>
+                <div class="dashboard-item">
+                    <h3>Total Sellers</h3>
+                    <p id="total-sellers">0</p>
+                </div>
+                <div class="dashboard-item">
+                    <h3>Total Products</h3>
+                    <p id="total-products">0</p>
+                </div>
+            </div>
+
+            <div class="user-manage content-section" id="user-manage">
+                <h3>User Management</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Profile</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Number</th>
+                            <th>Date of Birth</th>
+                            <th>Gender</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-list"></tbody>
+                </table>
+            </div>
+            <div class="seller-manage content-section" id="seller-manage">
+                <h3>Seller Management</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Profile</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Number</th>
+                            <th>Business</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="seller-list"></tbody>
+                </table>
+            </div>
+
+            <div class="product-manage content-section" id="product-manage">
+                <h3>Product Management</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product Image</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Color</th>
+                            <th>Company Name</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-managed-products"></tbody>
+                </table>
+            </div>
+
+            <div class="seller-approval content-section" id="seller-approval">
+                <h3>Seller Approval</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Profile</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Number</th>
+                            <th>Business</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="seller-approval-list"></tbody>
+                </table>
+            </div>
+
+            <div class="product-approval content-section" id="product-approval">
+                <h3>Product Approval</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Product Image</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Company Name</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-product-requests"></tbody>
+                </table>
+            </div>
+            <div class="settings content-section" id="settings">
+                <h3>Settings</h3>
+                <form>
+                    <label for="site-name">Site Name:</label>
+                    <input type="text" id="site-name" name="site-name" value="V Shop">
+
+                    <label for="admin-email">Admin Email:</label>
+                    <input type="email" id="admin-email" name="admin-email" value="admin@vshop.com">
+                </form>
+                <div class="language-setting">
+                    <label for="dashboard-language-select">Website language</label>
+                    <select class="dashboard-language-select" id="dashboard-language-select" aria-label="Website language">
+                        <option value="en">English</option>
+                        <option value="hi">हिन्दी</option>
+                        <option value="pa">ਪੰਜਾਬੀ</option>
+                        <option value="bn">বাংলা</option>
+                        <option value="ta">தமிழ்</option>
+                        <option value="te">తెలుగు</option>
+                    </select>
+                    <p>Choose a language to translate this page instantly.</p>
+                </div>
+            </div>
+        </main>
+        <dialog class="user-details-dialog" id="user-details-dialog" aria-labelledby="user-details-title">
+            <div class="user-details-heading">
+                <h2 id="user-details-title">User details</h2>
+                <button class="user-details-close" id="close-user-details" type="button" aria-label="Close">×</button>
+            </div>
+            <div class="user-details-content" id="user-details-content"></div>
+        </dialog>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="supabase-config.js"></script>
+        <script src="localstorage.js"></script>
+        <script src="cloud-storage.js"></script>
+        <script src="dashboard-language.js"></script>
+        <script src="sa.js"></script>
+    </body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Seller Login & Registration | VCart</title>
+	<style>
+		* { box-sizing: border-box; }
+		body {
+			margin: 0;
+			min-height: 100vh;
+			display: grid;
+			place-items: center;
+			padding: 24px;
+			background: linear-gradient(135deg, #eef4ff, #dfeafe);
+			color: #1e293b;
+			font-family: Arial, sans-serif;
+		}
+		.auth-card {
+			width: min(100%, 480px);
+			padding: 30px;
+			border-radius: 18px;
+			background: #fff;
+			box-shadow: 0 15px 40px rgba(37, 99, 235, .12);
+		}
+		h1 { margin: 0 0 8px; text-align: center; }
+		.intro { margin: 0 0 22px; color: #64748b; text-align: center; }
+		.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 22px; }
+		.tabs button, form button {
+			padding: 12px;
+			border: 0;
+			border-radius: 9px;
+			font: inherit;
+			font-weight: 700;
+			cursor: pointer;
+		}
+		.tabs button { background: #eef2f7; color: #334155; }
+		.tabs button[aria-selected="true"], form button { background: #2563eb; color: #fff; }
+		form { display: grid; gap: 13px; }
+		form[hidden] { display: none; }
+		label { display: grid; gap: 6px; font-weight: 600; }
+		input {
+			width: 100%;
+			padding: 11px 12px;
+			border: 1px solid #cbd5e1;
+			border-radius: 8px;
+			font: inherit;
+		}
+		select {
+			width: 100%;
+			padding: 11px 12px;
+			border: 1px solid #cbd5e1;
+			border-radius: 8px;
+			background: #fff;
+			font: inherit;
+		}
+		input:focus { outline: 2px solid #93c5fd; border-color: #2563eb; }
+		.password-control { display: flex; gap: 8px; }
+		.password-control input { min-width: 0; flex: 1; }
+		.password-toggle {
+			padding: 0 12px;
+			border: 1px solid #cbd5e1;
+			border-radius: 8px;
+			background: #f8fafc;
+			color: #334155;
+			font: inherit;
+			font-weight: 600;
+			cursor: pointer;
+		}
+		.message { min-height: 1.3em; margin: 14px 0 0; color: #b91c1c; }
+		.links { display: flex; justify-content: center; gap: 8px; margin-top: 18px; color: #64748b; }
+		a { color: #1d4ed8; }
+	</style>
+</head>
+<body>
+	<main class="auth-card">
+		<h1>Seller Portal</h1>
+		<p class="intro">Sign in or create your VCart seller account.</p>
+		<div class="tabs" role="tablist" aria-label="Seller account">
+			<button id="login-tab" type="button" role="tab" aria-controls="seller-login" aria-selected="true">Login</button>
+			<button id="register-tab" type="button" role="tab" aria-controls="seller-register" aria-selected="false">Register</button>
+		</div>
+		<form id="seller-login" aria-labelledby="login-tab">
+			<label>Email
+				<input name="identifier" type="email" autocomplete="username" required>
+			</label>
+			<label>Password
+				<span class="password-control">
+					<input id="seller-login-password" name="password" type="password" autocomplete="current-password" required>
+					<button class="password-toggle" type="button" data-password-target="seller-login-password" aria-label="Show password" aria-pressed="false">Show</button>
+				</span>
+			</label>
+			<button type="submit">Login</button>
+		</form>
+		<form id="seller-register" aria-labelledby="register-tab" hidden>
+			<label>Seller name
+				<input name="sellerName" type="text" autocomplete="name" required>
+			</label>
+			<label>Email
+				<input name="email" type="email" autocomplete="email" required>
+			</label>
+			<label>Phone
+				<input name="phone" type="tel" autocomplete="tel" required>
+			</label>
+			<label>Business name
+				<input name="businessName" type="text" autocomplete="organization" required>
+			</label>
+			<label>Business type
+				<select name="businessType" required>
+					<option value="">Select business type</option>
+					<option value="Proprietorship">Sole proprietorship</option>
+					<option value="Partnership">Partnership</option>
+					<option value="LLP">LLP</option>
+					<option value="Private Limited">Private limited company</option>
+					<option value="Public Limited">Public limited company</option>
+					<option value="Other">Other</option>
+				</select>
+			</label>
+			<label>Business address
+				<input name="businessAddress" type="text" autocomplete="street-address" required>
+			</label>
+			<label>PAN
+				<input name="pan" type="text" placeholder="ABCDE1234F" minlength="10" maxlength="10" pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]" autocomplete="off" required>
+			</label>
+			<label>GSTIN (optional)
+				<input name="gstin" type="text" placeholder="15-character GSTIN" minlength="15" maxlength="15" autocomplete="off">
+			</label>
+			<label>Bank account holder name
+				<input name="accountHolder" type="text" autocomplete="name" required>
+			</label>
+			<label>Bank account number
+				<input name="accountNumber" type="text" inputmode="numeric" pattern="[0-9]{9,18}" autocomplete="off" required>
+			</label>
+			<label>IFSC code
+				<input name="ifsc" type="text" placeholder="ABCD0123456" minlength="11" maxlength="11" pattern="[A-Za-z]{4}0[A-Za-z0-9]{6}" autocomplete="off" required>
+			</label>
+			<label>Password (minimum 8 characters)
+				<span class="password-control">
+					<input id="seller-register-password" name="password" type="password" autocomplete="new-password" minlength="8" required>
+					<button class="password-toggle" type="button" data-password-target="seller-register-password" aria-label="Show password" aria-pressed="false">Show</button>
+				</span>
+			</label>
+			<label>Confirm password
+				<span class="password-control">
+					<input id="seller-confirm-password" name="confirmPassword" type="password" autocomplete="new-password" minlength="8" required>
+					<button class="password-toggle" type="button" data-password-target="seller-confirm-password" aria-label="Show password" aria-pressed="false">Show</button>
+				</span>
+			</label>
+			<button type="submit">Create seller account</button>
+		</form>
+		<p class="message" id="auth-message" role="status" aria-live="polite"></p>
+		<div class="links"><a href="index.html">Store home</a><span>|</span><a href="userlogin.html">Customer login</a></div>
+	</main>
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+	<script src="supabase-config.js"></script>
+	<script src="localstorage.js"></script>
+	<script src="cloud-storage.js"></script>
+	<script>
+        const loginTab = document.querySelector('#login-tab');
+const registerTab = document.querySelector('#register-tab');
+const loginForm = document.querySelector('#seller-login');
+const registerForm = document.querySelector('#seller-register');
+const authMessage = document.querySelector('#auth-message');
+
+document.querySelectorAll('.password-toggle[data-password-target]').forEach((button) => {
+	button.addEventListener('click', () => {
+		const passwordInput = document.getElementById(button.dataset.passwordTarget);
+		if (!passwordInput) return;
+		const showPassword = passwordInput.type === 'password';
+		passwordInput.type = showPassword ? 'text' : 'password';
+		button.textContent = showPassword ? 'Hide' : 'Show';
+		button.setAttribute('aria-label', `${showPassword ? 'Hide' : 'Show'} password`);
+		button.setAttribute('aria-pressed', String(showPassword));
+	});
+});
+
+function showSellerAuthForm(form) {
+	const showLogin = form === loginForm;
+	loginForm.hidden = !showLogin;
+	registerForm.hidden = showLogin;
+	loginTab.setAttribute('aria-selected', String(showLogin));
+	registerTab.setAttribute('aria-selected', String(!showLogin));
+	authMessage.textContent = '';
+}
+
+loginTab.addEventListener('click', () => showSellerAuthForm(loginForm));
+registerTab.addEventListener('click', () => showSellerAuthForm(registerForm));
+
+registerForm.addEventListener('submit', async (event) => {
+	event.preventDefault();
+	const formData = new FormData(registerForm);
+	const password = String(formData.get('password') || '');
+	if (password !== String(formData.get('confirmPassword') || '')) {
+		authMessage.textContent = 'Passwords do not match.';
+		registerForm.elements.confirmPassword.focus();
+		return;
+	}
+
+	const seller = {
+		sellerName: String(formData.get('sellerName') || '').trim(),
+		email: String(formData.get('email') || '').trim(),
+		phone: String(formData.get('phone') || '').trim(),
+		businessName: String(formData.get('businessName') || '').trim(),
+		businessType: String(formData.get('businessType') || '').trim(),
+		businessAddress: String(formData.get('businessAddress') || '').trim(),
+		gstin: String(formData.get('gstin') || '').trim(),
+		pan: String(formData.get('pan') || '').trim().toUpperCase(),
+		accountHolder: String(formData.get('accountHolder') || '').trim(),
+		accountNumber: String(formData.get('accountNumber') || '').trim(),
+		ifsc: String(formData.get('ifsc') || '').trim().toUpperCase(),
+		password
+	};
+
+	try {
+		const result = await window.VCartSellers.register(seller);
+		if (result === false) {
+			showSellerAuthForm(loginForm);
+			loginForm.elements.identifier.value = seller.email;
+			authMessage.textContent = 'An account or pending request with this email or phone already exists. Please log in or wait for admin review.';
+			return;
+		}
+		if (result?.confirmationRequired) {
+			showSellerAuthForm(loginForm);
+			loginForm.elements.identifier.value = seller.email;
+			authMessage.textContent = 'Confirm your email first. Then log in, open Create seller account again, and submit the business details.';
+			return;
+		}
+		showSellerAuthForm(loginForm);
+		loginForm.elements.identifier.value = seller.email;
+		loginForm.elements.password.value = '';
+		authMessage.textContent = 'Seller request submitted successfully. Your account will be created after admin approval.';
+	} catch (error) {
+		console.error('Could not register the seller account.', error);
+		authMessage.textContent = error instanceof TypeError
+			? error.message
+			: 'Could not save the account. Check your internet connection and try again.';
+	}
+});
+
+loginForm.addEventListener('submit', async (event) => {
+	event.preventDefault();
+	const identifier = loginForm.elements.identifier.value.trim();
+	const password = loginForm.elements.password.value;
+	try {
+		const authentication = await window.VCartSellers.authenticate(identifier, password);
+		if (authentication.status === 'blocked') {
+			authMessage.textContent = 'This seller account is blocked. Please contact the administrator.';
+			return;
+		}
+		if (authentication.status === 'pending') {
+			if (!authentication.applicationComplete) {
+				showSellerAuthForm(registerForm);
+				registerForm.elements.email.value = identifier;
+				authMessage.textContent = 'Complete the seller application after email confirmation, then submit it for admin approval.';
+			} else {
+				authMessage.textContent = 'Your seller request is pending admin approval.';
+			}
+			return;
+		}
+		if (authentication.status === 'rejected') {
+			authMessage.textContent = 'Your seller request was rejected. Please contact the administrator for more information.';
+			return;
+		}
+		if (authentication.status !== 'authenticated') {
+			if (authentication.status === 'unconfirmed') {
+				authMessage.textContent = 'Please confirm your email using the link we sent, then log in again.';
+				return;
+			}
+			if (authentication.status === 'email_required') {
+				authMessage.textContent = 'Please log in using your email address.';
+				return;
+			}
+			authMessage.textContent = 'Email or password is incorrect.';
+			return;
+		}
+		window.VCartSession.set(authentication.account || { role: 'seller', ...authentication.seller });
+		window.location.href = authentication.account?.role === 'admin' ? 'sa.html' : 'seller.html';
+	} catch (error) {
+		console.error('Could not authenticate the seller.', error);
+		authMessage.textContent = 'Could not check the account. Please try again.';
+	}
+});
+
+    </script>
+</body>
+</html>
