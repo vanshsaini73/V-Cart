@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <meta name="theme-color" content="#f3f8fc">
+        <title>Checkout</title>
+        <link rel="stylesheet" href="checkout.css">
+        <script src="account-session.js" defer></script>
+        <script src="checkout.js" defer></script>
+    </head>
+    <body class="checkout-page">
+        <header class="header">
+            <a href="product-details.html" class="back-page" id="back-to-product" aria-label="Back to product details">&#8592;</a>
+            <h1>Checkout</h1>
+        </header>
+        <main class="checkout-main">
+            <form>
+                <section id="checkout-product-section">
+                    
+                    <table class="product-details">
+                        <tr>
+                            <td><img id="checkout-product-image" alt=""></td>
+                            <td>
+                                <table class="product-info-table">
+                                    <tr>
+                                        <td>
+                                            <div class="checkout-product-name" id="checkout-product-name"></div>
+                                            <div class="checkout-product-pricing">
+                                                <span class="checkout-product-price" id="checkout-product-price"></span>
+                                                <del id="checkout-product-old-price"></del>
+                                                <span class="checkout-product-discount" id="checkout-product-discount"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="quantity-row">
+                                                <span class="quantity-label">Qty</span>
+                                                <div class="quantity-control" aria-label="Product quantity">
+                                                    <button class="quantity-button" type="button" data-quantity-change="-1" aria-label="Decrease quantity">−</button>
+                                                    <output class="quantity-value" id="product-quantity" aria-live="polite">1</output>
+                                                    <button class="quantity-button" type="button" data-quantity-change="1" aria-label="Increase quantity">+</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <p class="checkout-product-error" id="checkout-product-error" role="alert" hidden></p>
+                </section>
+                <section class="customer-details">
+                    <h3>Customer Detail</h3>
+                    <div class="form-field">
+                        <label for="first-name">First Name</label>
+                        <input id="first-name" name="firstName" type="text" placeholder="Enter First Name" autocomplete="given-name" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="middle-name">Middle Name</label>
+                        <input id="middle-name" name="middleName" type="text" placeholder="Enter Middle Name">
+                    </div>
+                    <div class="form-field">
+                        <label for="last-name">Last Name</label>
+                        <input id="last-name" name="lastName" type="text" placeholder="Enter Last Name" autocomplete="family-name" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="mobile">Mobile No.</label>
+                        <input id="mobile" name="mobile" type="tel" placeholder="Enter Mobile No." autocomplete="tel" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="email">Email Id</label>
+                        <input id="email" name="email" type="email" placeholder="Enter Email Id" autocomplete="email">
+                    </div>
+                </section>
+                <section class="delivery-address">
+                    <h3>Delivery Address</h3>
+                    <div class="form-field form-field-wide">
+                        <label for="street">House / Street</label>
+                        <input id="street" name="street" type="text" placeholder="Enter House No. and Street" autocomplete="street-address" required>
+                    </div>
+                    <div class="form-field form-field-wide">
+                        <label for="landmark">Landmark</label>
+                        <input id="landmark" name="landmark" type="text" placeholder="Near Your Landmark" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="city">City</label>
+                        <input id="city" name="city" type="text" placeholder="Enter Your City" autocomplete="address-level2" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="state">State</label>
+                        <input id="state" name="state" type="text" placeholder="Enter Your State" autocomplete="address-level1" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="pin-code">PIN Code</label>
+                        <input id="pin-code" name="postalCode" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="Enter PIN Code" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="address-type">Address Type</label>
+                        <select id="address-type" name="addressType">
+                            <option value="home">Home</option>
+                            <option value="work">Work</option>
+                        </select>
+                    </div>
+                </section>
+                <section class="payment-method">
+                    <h3>Payment Method</h3>
+                    <label class="payment-option" for="cod">
+                        <input type="radio" name="payment" id="cod" value="cod" checked>
+                        <span class="payment-icon" aria-hidden="true">&#8377;</span>
+                        <span>
+                            <strong>Cash on Delivery</strong>
+                            <small>Pay when your order arrives</small>
+                        </span>
+                    </label>
+                </section>
+                <section class="price-details">
+                    <h3>Price Details</h3>
+                    <table class="price-table">
+                        <tr>
+                            <td>Product Price</td>
+                            <td id="price-product-price"></td>
+                        </tr>
+                        <tr>
+                            <td>Discount</td>
+                            <td id="price-discount"></td>
+                        </tr>
+                        <tr>
+                            <td>Qty</td>
+                            <td><span id="price-quantity">1</span></td>
+                        </tr>
+                        <tr>
+                            <td>Final Price</td>
+                            <td id="price-final"></td>
+                        </tr>
+                        <tr>
+                            <td>Delivery</td>
+                            <td id="price-delivery"></td>
+                        </tr>
+                        <tr>
+                            <th>Total Amount</th>
+                            <th id="price-total"></th>
+                        </tr>
+                    </table>
+                </section>
+                <section class="terms-conditions">
+                    <h3>Terms and Conditions</h3>
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+                </section>
+                <section class="order-btn">
+                    <button type="submit">Order Now</button>
+                </section>
+            </form>
+         </main>
+        <dialog class="order-success-dialog" id="order-success-dialog" aria-labelledby="order-success-title">
+            <div class="success-icon" aria-hidden="true">&#10003;</div>
+            <h2 id="order-success-title">Thank you!</h2>
+            <p>Your order has been placed successfully.</p>
+            <div class="success-actions">
+                <a class="success-button success-button-primary" href="index.html">Continue Shopping</a>
+                <a class="success-button success-button-secondary" id="track-order-link" href="order.html">Track Order</a>
+            </div>
+        </dialog>
+    </body>
+</html>

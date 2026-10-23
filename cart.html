@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <title>Checkout | VCart</title>
+        <link rel="stylesheet" href="cart.css">
+        <link rel="stylesheet" href="nav-bottom.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    </head>
+    <body>
+        <header class="cart-page-header">
+            <span class="cart-header-icon" aria-hidden="true">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </span>
+            <div>
+                <h1>Cart</h1>
+                <p>Review your items before placing an order.</p>
+            </div>
+        </header>
+        <main class="main-content">
+            <section class="product-details" id="cart-items" aria-label="Cart items">
+                <p class="cart-empty" hidden>Your cart is empty.</p>
+            </section>
+            <template id="cart-item-template">
+                <div class="product">
+                    <div class="cart-product">
+                        <div class="product-image">
+                            <img alt="">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name"></div>
+                            <div class="product-price">
+                                <del></del>
+                                <span class="current-price"></span>
+                                <span class="discount-label"></span>
+                            </div>
+                        </div>
+                        <label class="select-product">
+                            <input type="checkbox" aria-label="Select this cart item">
+                        </label>
+                    </div>
+                    <div class="quantity-control" aria-label="Product quantity">
+                        <button class="quantity-button" type="button" data-quantity-change="-1" aria-label="Decrease quantity">−</button>
+                        <output class="quantity-value" aria-live="polite">1</output>
+                        <button class="quantity-button" type="button" data-quantity-change="1" aria-label="Increase quantity">+</button>
+                    </div>
+                    <div class="cart-actions">
+                        <button class="remove-button" type="button">Remove from Cart</button>
+                        <button class="wishlist-button" type="button">Move to Wishlist</button>
+                        <button class="order-button" type="button">Order Now</button>
+                    </div>
+                </div>
+            </template>
+            <section class="final-price" id="final-price" aria-labelledby="price-title">
+                <div class="price-heading">
+                    <h2 id="price-title">Price Details</h2>
+                    <button class="close-price-button" type="button" aria-label="Close price details">×</button>
+                </div>
+                <table class="price-table">
+                    <tbody>
+                        <tr>
+                            <td>No. of Items</td>
+                            <td id="price-item-count">0</td>
+                        </tr>
+                        <tr>
+                            <td>Product Price</td>
+                            <td id="price-product-total">₹0</td>
+                        </tr>
+                        <tr>
+                            <td>Discount</td>
+                            <td id="price-discount-total">−₹0</td>
+                        </tr>
+                        <tr>
+                            <td>Total Price</td>
+                            <td id="price-subtotal">₹0</td>
+                        </tr>
+                        <tr>
+                            <td>Delivery Charges</td>
+                            <td id="price-delivery">Free</td>
+                        </tr>
+                        <tr class="grand-total">
+                            <th>Total Amount</th>
+                            <th id="price-grand-total">₹0</th>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="checkout-button" type="button">Proceed to Order</button>
+            </section>
+        </main>
+        <button class="price-backdrop" type="button" aria-label="Close price details" hidden></button>
+        <button class="next-button" type="button" aria-controls="final-price" aria-expanded="false">Next</button>
+        <nav class="nav-bottom" aria-label="Main navigation">
+            <a href="index.html" data-home-link>
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+                <span>Home</span>
+            </a>
+            <a href="cart.html" data-cart-link aria-current="page">
+                <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                <span>Cart</span>
+            </a>
+            <a href="order.html" data-order-link>
+                <i class="fa-solid fa-box" aria-hidden="true"></i>
+                <span>Orders</span>
+            </a>
+            <a href="userlogin.html" data-account-link>
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+                <span>Account</span>
+            </a>
+        </nav>
+        <script src="account-session.js"></script>
+        <script src="wishlist.js"></script>
+        <script src="cart.js"></script>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product Details</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <link rel="stylesheet" href="product-details.css">
+    </head>
+    <body>
+        <header class="header">
+            <a href="index.html" class="back-page" aria-label="Back to products">&#8592;</a>
+            <h1>Product Details</h1>
+        </header>
+        <div class="product">
+            <div class="product-img">
+                <img id="detail-image">
+            </div>
+            <div class="product-details">
+                <div class="product-price">
+                    <del id="detail-old-price"></del>
+                    <span id="detail-discount"></span>
+                </div>
+                <div id="detail-price"></div>
+                <div class="product-name">
+                    <span id="detail-name"></span>
+                </div>
+            </div>
+            <div id="detail-description" class="product-description">
+                <h2>Product specifications</h2>
+                <div id="detail-description-content">
+                </div>
+            </div>
+            <section id="detail-specifications" class="product-specifications" hidden>
+                <table>
+                    <tbody id="detail-specifications-body"></tbody>
+                </table>
+            </section>
+        </div>
+        <div class="bottom-btn">
+            <button class="cart-btn">Add to Cart</button>
+            <button class="order-btn">Order Now</button>
+        </div>
+        <script src="account-session.js"></script>
+        <script src="wishlist.js"></script>
+        <script src="product-details.js"></script>
+    </body>
+</html>

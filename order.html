@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <meta name="theme-color" content="#f3f8fc">
+        <title>My Orders | VCart</title>
+        <link rel="stylesheet" href="order.css">
+        <link rel="stylesheet" href="nav-bottom.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    </head>
+    <body>
+        <main class="orders-page">
+            <header class="page-heading">
+                <div>
+                    <h3>My Orders</h3>
+                    <p class="page-description">Shopping with VCart is easy and convenient.</p>
+                </div>
+                <a class="continue-shopping" href="index.html">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                    Continue shopping
+                </a>
+            </header>
+
+            <p class="order-confirmation" id="order-confirmation" role="status" hidden>
+                <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                Your order has been placed. You can track its progress below.
+            </p>
+
+            <section class="orders-toolbar" aria-label="Find and filter orders">
+                <label class="order-search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <span class="visually-hidden">Search orders</span>
+                    <input id="order-search" type="search" placeholder="Search by product or order ID">
+                </label>
+                <div class="order-filters" role="group" aria-label="Filter orders">
+                    <button class="filter-button is-active" type="button" data-order-filter="all" aria-pressed="true">
+                        All orders <span data-filter-count="all">0</span>
+                    </button>
+                    <button class="filter-button" type="button" data-order-filter="confirmed" aria-pressed="false">
+                        Processing <span data-filter-count="confirmed">0</span>
+                    </button>
+                    <button class="filter-button" type="button" data-order-filter="shipped" aria-pressed="false">
+                        On the way <span data-filter-count="shipped">0</span>
+                    </button>
+                    <button class="filter-button" type="button" data-order-filter="delivered" aria-pressed="false">
+                        Delivered <span data-filter-count="delivered">0</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="order-list" id="order-list" aria-label="Orders">
+                <p class="no-orders" id="no-orders">You haven't placed any orders yet. Your orders will appear here.</p>
+            </section>
+        </main>
+
+        <template id="order-card-template">
+            <article class="order-card">
+                <div class="order-card-header">
+                    <div>
+                        <p class="order-id">ORDER <strong data-order-id></strong></p>
+                        <p class="order-date" data-order-date></p>
+                    </div>
+                    <span class="status-pill" data-order-status></span>
+                </div>
+                <div class="order-products"></div>
+                <button class="tracking-toggle" type="button" aria-expanded="false">
+                    Track order <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="tracking-panel" hidden>
+                    <div class="tracking-heading">
+                        <div>
+                            <h3>Tracking updates</h3>
+                            <p>Tracking ID: <strong data-tracking-id></strong></p>
+                        </div>
+                        <span class="courier-label"><i class="fa-solid fa-box" aria-hidden="true"></i> VCart Express</span>
+                    </div>
+                    <ol class="tracking-steps" aria-label="Order progress"></ol>
+                </div>
+            </article>
+        </template>
+
+        <template id="order-product-template">
+            <div class="order-product">
+                <div class="product-image-wrap">
+                    <img data-product-image alt="">
+                </div>
+                <div class="product-copy">
+                    <h2 data-product-name></h2>
+                    <p>Qty <span data-product-quantity></span></p>
+                    <strong data-product-price></strong>
+                </div>
+                <div class="delivery-estimate">
+                    <span class="estimate-label"></span>
+                    <strong data-estimated-delivery></strong>
+                    <span class="estimate-note"></span>
+                </div>
+            </div>
+        </template>
+
+        <template id="tracking-step-template">
+            <li>
+                <span class="step-icon"><i aria-hidden="true"></i></span>
+                <div><strong></strong><span></span></div>
+            </li>
+        </template>
+
+        <nav class="nav-bottom" aria-label="Main navigation">
+            <a href="index.html" data-home-link>
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+                <span>Home</span>
+            </a>
+            <a href="cart.html" data-cart-link>
+                <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                <span>Cart</span>
+            </a>
+            <a href="order.html" data-order-link aria-current="page">
+                <i class="fa-solid fa-box" aria-hidden="true"></i>
+                <span>Orders</span>
+            </a>
+            <a href="userlogin.html" data-account-link>
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+                <span>Account</span>
+            </a>
+        </nav>
+        <script src="account-session.js"></script>
+        <script src="order.js"></script>
+    </body>
+</html>

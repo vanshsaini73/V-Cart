@@ -1,0 +1,422 @@
+
+
+* {
+    box-sizing: border-box;
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+    background-color: #cff4ff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px 18px;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.08);
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 12px;
+}
+
+.brand-logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.brand-logo img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    display: block;
+}
+
+.brand-name {
+    font-size: 18px;
+    color: #222;
+    font-weight: bold;
+}
+
+.brand-description {
+    font-size: 13px;
+    color: #666;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: auto;
+}
+
+.nav-links a {
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #333;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-links a:hover {
+    background-color:white;
+    transform: translateX(2px);
+}
+
+.logout-btn {
+    margin-top: 20px;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #dc3545;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+.header {
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    width: calc(100% - 240px);
+    min-height: 72px;
+    padding: 14px 32px;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.08);
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    padding:18px 20px ;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid black;
+    background-color: #e9f7ff;
+    width: 100%;
+    max-width: 400px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    width: 100%;
+    background: transparent;
+    font-size: 0.96rem;
+}
+
+.search-btn{
+    background-color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-right: 3%;
+    margin-top: 0px;
+}
+
+.profile-pic {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #007bff, #0056d2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.profile-name {
+    font-size: 18px;
+    color: #222;
+    font-weight: bold;
+}
+
+.profile-description {
+    font-size: 13px;
+    color: #666;
+}
+
+.main-content {
+    margin-left: 230px;
+    padding: 73px 32px 40px;
+    width: calc(100% - 240px);
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-around;
+    gap: 24px;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.language-setting {
+    box-sizing: border-box;
+    display: grid;
+    gap: 10px;
+    width: min(100%, 420px);
+    margin-top: 18px;
+    padding: 20px;
+    border: 1px solid #dfe4ea;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.language-setting label {
+    color: #333;
+    font-weight: 600;
+}
+
+.language-setting select {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: #fff;
+    color: #333;
+    font: inherit;
+}
+
+.language-setting p {
+    margin: 0;
+    color: #666;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.nav-links a.active {
+    background-color: #ffffff;
+    color: #0056d2;
+    font-weight: 600;
+}
+
+/* User Management Section */
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+thead {
+    position: sticky;
+    z-index: 2;
+    background: #2874f0;
+    color: white;
+}
+
+th {
+    padding: 15px;
+    text-align: center;
+    white-space: nowrap;
+    position: sticky;
+    top: 128px;
+    z-index: 2;
+    background: #2874f0;
+    color: white;
+}
+
+th:first-child {
+    border-top-left-radius: 10px;
+}
+
+th:last-child {
+    border-top-right-radius: 10px;
+}
+
+td {
+    padding: 14px 15px;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.user-profile-cell {
+    width: 72px;
+}
+
+.user-avatar {
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #007bff, #0056d2);
+    color: #fff;
+    font-weight: 700;
+}
+
+tbody tr:hover {
+    background: #f5f8ff;
+}
+
+.section-detail{
+    position: sticky;
+    top: 73px;
+    z-index: 3;
+    background: #f5f7fa;
+    color: black;
+    font-weight: bold;
+    font-size: 24px;
+    padding: 10px 12px 17px;
+}
+
+.status-btn{
+    color: #222;
+    border: none;
+    padding: 6px 12px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.status-btn.status-active,
+.status-btn.status-success {
+    background-color: #d0ffd0;
+}
+
+.status-btn.status-rejected,
+.status-btn.status-deactivated {
+    background-color: #ffbbc1;
+}
+
+.status-btn.status-pending {
+    background-color: #fff3a6;
+}
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 6px 12px;
+    flex-wrap: wrap;
+}
+
+.block-btn {
+    background-color: rgb(255, 255, 210);
+    color: #222;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.delete-btn {
+    background-color: #ffbbc1;
+    color: black;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.detail-btn {
+    background-color: #d4e4fa;
+    color: black;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.approve-btn {
+    background-color:  #d0ffd0;
+    color: black;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.reject-btn {
+    background-color: #ffbbc1;
+    color: black;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
